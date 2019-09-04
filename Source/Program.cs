@@ -15,9 +15,33 @@ namespace SuperOffice.DevNet.Online.SystemUser.NetCore.ConsoleApp
     public static class Constants
     {
 
+        /**************************************************************************
+        *** When migrating between SOD, STAGE and PRODUCTION **********************
+        *** 1) Change ServiceConsoleCert.xml and SuperOfficeFederatedLogin.cert ***
+        *** 2) Change the following constant values *******************************
+        ************||||||||||||||||||||||||||||||||||||||||||||||||||*************
+        ************\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/************/
+
         // set the environment system user endpoint
+
         public const string SystemUserEndpoint = "https://sod.superoffice.com/Login/services/PartnerSystemUserService.svc";
-        public const string SuperIdCertificateThumbprint = "";
+
+        // App Secret / Token
+
+        public const string ApplicationToken = "YOUR_APPLICATION_TOKEN";
+
+        // Application System User Token
+
+        public const string SystemUserToken = "YOUR_APPLICATION_NAME-SomeRandomCode";
+
+        // Customer ContextIdentifier
+
+        public const string ContextIdentifier = "YOUR_TENANT_CONTEXT_IDENTIFIER";
+
+        /*****^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*******
+        ******||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*******
+        ****** Change these values between SOD, Stage and Production **************
+        **************************************************************************/
     }
 
     class Program
@@ -26,29 +50,17 @@ namespace SuperOffice.DevNet.Online.SystemUser.NetCore.ConsoleApp
         {
             var success = false;
 
-            // App Secret / Token
-
-            var appTk = "YOUR_APPLICATION_TOKEN";
-
-            // Application System User Token
-
-            var sysTk = "YOUR APPLICATION NAME-SomeRandomCode";
-
-            // Customer ContextIdentifier
-
-            var appcx = "Cust12345";
-
             // read the private certificate file to sign the request to exchange token for ticket
 
             var certificate = File.ReadAllText(AppContext.BaseDirectory + "ServiceConsoleCert.xml");
 
             // sign the token
 
-            var signedToken = Sign(certificate, sysTk);
+            var signedToken = Sign(certificate, Constants.SystemUserToken);
 
             // exchange the token for a system user ticket
 
-            var response = Authenticate(appTk, appcx, signedToken);
+            var response = Authenticate(Constants.ApplicationToken, Constants.ContextIdentifier, signedToken);
 
             if (response.IsSuccessful)
             {
