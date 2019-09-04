@@ -30,7 +30,7 @@ namespace SuperOffice.DevNet.Online.SystemUser.NetCore.ConsoleApp
 
             var appTk = "YOUR_APPLICATION_TOKEN";
 
-            // SystemToken - this is obtained from the JWT returned via user interaction sign-in
+            // Application System User Token
 
             var sysTk = "YOUR APPLICATION NAME-SomeRandomCode";
 
@@ -72,18 +72,17 @@ namespace SuperOffice.DevNet.Online.SystemUser.NetCore.ConsoleApp
                 var webapi_url = claims.FirstOrDefault(c => c.Type.Contains("webapi")).Value;
 
                 /* User systemUserTicket to create REST calls to the webapi_url...
-                    GET /Cust26759/api/v1/MDOList/category?flat=True HTTP/1.1
+                GET /Cust26759/api/v1/MDOList/category?flat=True HTTP/1.1
                     Host: sod.superoffice.com
                     accept: application/json
                     authorization: SOTICKET 7T:MAA3AGYAMQBlAGQAZAAxAGQAZQAwADgAYgAxAGEAYwBkADYAOAA0ADcAMQA2ADkAOQBhADQAZgBiADMAOQAyADsAMgAwADgANwAzADEANQAwADQAMwA7AEMAdQBzAHQAMgA2ADcANQA5AA==
-                    SO-AppToken: f2398a3a7wer3759d4b220e9a9c94321
                     accept-language: en
+                    SO-AppToken: f2398a3a7wer3759d4b220e9a9c94321
                 */
                 success = true;
 
-
-
-                return;
+                Console.WriteLine($"Ticket: {systemUserTicket}");
+                Console.WriteLine($"WebAPI URL: {webapi_url}");
             }
 
             Console.WriteLine(success ? "Success!" : "Failed!");
