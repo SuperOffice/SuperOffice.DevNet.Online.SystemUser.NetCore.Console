@@ -19,7 +19,7 @@ public static class Constants
     ************||||||||||||||||||||||||||||||||||||||||||||||||||*************
     ************\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/************/
 
-    // set the environment system user endpoint
+    // set the environment system user endpoint (sod, stage, online)
 
     public const string SystemUserEndpoint = "https://sod.superoffice.com/Login/services/PartnerSystemUserService.svc";
 
