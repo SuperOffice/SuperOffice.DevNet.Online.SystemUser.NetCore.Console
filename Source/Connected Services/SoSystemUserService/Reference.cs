@@ -7,12 +7,12 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SoSystemUserService
+namespace SoSystemUserAuthentication
 {
     using System.Runtime.Serialization;
     
     
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.1-preview-30514-0828")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="TokenType", Namespace="http://www.superoffice.com/superid/partnersystemuser/0.1")]
     public enum TokenType : int
     {
@@ -24,8 +24,8 @@ namespace SoSystemUserService
         Saml = 1,
     }
     
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.1-preview-30514-0828")]
-    [System.ServiceModel.ServiceContractAttribute(Namespace="http://www.superoffice.com/superid/partnersystemuser/0.1", ConfigurationName="SoSystemUserService.IPartnerSystemUserService")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
+    [System.ServiceModel.ServiceContractAttribute(Namespace="http://www.superoffice.com/superid/partnersystemuser/0.1", ConfigurationName="SoSystemUserAuthentication.IPartnerSystemUserService")]
     public interface IPartnerSystemUserService
     {
         
@@ -33,11 +33,11 @@ namespace SoSystemUserService
         [System.ServiceModel.OperationContractAttribute(Action="http://www.superoffice.com/superid/partnersystemuser/0.1/IPartnerSystemUserServic" +
             "e/Authenticate", ReplyAction="http://www.superoffice.com/superid/partnersystemuser/0.1/IPartnerSystemUserServic" +
             "e/AuthenticateResponse")]
-        System.Threading.Tasks.Task<SoSystemUserService.AuthenticationResponse> AuthenticateAsync(SoSystemUserService.AuthenticationRequest request);
+        System.Threading.Tasks.Task<SoSystemUserAuthentication.AuthenticationResponse> AuthenticateAsync(SoSystemUserAuthentication.AuthenticationRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.1-preview-30514-0828")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
     [System.ServiceModel.MessageContractAttribute(WrapperName="AuthenticationRequest", WrapperNamespace="http://www.superoffice.com/superid/partnersystemuser/0.1", IsWrapped=true)]
     public partial class AuthenticationRequest
     {
@@ -52,13 +52,13 @@ namespace SoSystemUserService
         public string SignedSystemToken;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.superoffice.com/superid/partnersystemuser/0.1", Order=1)]
-        public SoSystemUserService.TokenType ReturnTokenType;
+        public SoSystemUserAuthentication.TokenType ReturnTokenType;
         
         public AuthenticationRequest()
         {
         }
         
-        public AuthenticationRequest(string ApplicationToken, string ContextIdentifier, string SignedSystemToken, SoSystemUserService.TokenType ReturnTokenType)
+        public AuthenticationRequest(string ApplicationToken, string ContextIdentifier, string SignedSystemToken, SoSystemUserAuthentication.TokenType ReturnTokenType)
         {
             this.ApplicationToken = ApplicationToken;
             this.ContextIdentifier = ContextIdentifier;
@@ -68,7 +68,7 @@ namespace SoSystemUserService
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.1-preview-30514-0828")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
     [System.ServiceModel.MessageContractAttribute(WrapperName="AuthenticationResponse", WrapperNamespace="http://www.superoffice.com/superid/partnersystemuser/0.1", IsWrapped=true)]
     public partial class AuthenticationResponse
     {
@@ -94,14 +94,14 @@ namespace SoSystemUserService
         }
     }
     
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.1-preview-30514-0828")]
-    public interface IPartnerSystemUserServiceChannel : SoSystemUserService.IPartnerSystemUserService, System.ServiceModel.IClientChannel
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
+    public interface IPartnerSystemUserServiceChannel : SoSystemUserAuthentication.IPartnerSystemUserService, System.ServiceModel.IClientChannel
     {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.1-preview-30514-0828")]
-    public partial class PartnerSystemUserServiceClient : System.ServiceModel.ClientBase<SoSystemUserService.IPartnerSystemUserService>, SoSystemUserService.IPartnerSystemUserService
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
+    public partial class PartnerSystemUserServiceClient : System.ServiceModel.ClientBase<SoSystemUserAuthentication.IPartnerSystemUserService>, SoSystemUserAuthentication.IPartnerSystemUserService
     {
         
         /// <summary>
@@ -137,7 +137,7 @@ namespace SoSystemUserService
         {
         }
         
-        public System.Threading.Tasks.Task<SoSystemUserService.AuthenticationResponse> AuthenticateAsync(SoSystemUserService.AuthenticationRequest request)
+        public System.Threading.Tasks.Task<SoSystemUserAuthentication.AuthenticationResponse> AuthenticateAsync(SoSystemUserAuthentication.AuthenticationRequest request)
         {
             return base.Channel.AuthenticateAsync(request);
         }
@@ -145,11 +145,6 @@ namespace SoSystemUserService
         public virtual System.Threading.Tasks.Task OpenAsync()
         {
             return System.Threading.Tasks.Task.Factory.FromAsync(((System.ServiceModel.ICommunicationObject)(this)).BeginOpen(null, null), new System.Action<System.IAsyncResult>(((System.ServiceModel.ICommunicationObject)(this)).EndOpen));
-        }
-        
-        public virtual System.Threading.Tasks.Task CloseAsync()
-        {
-            return System.Threading.Tasks.Task.Factory.FromAsync(((System.ServiceModel.ICommunicationObject)(this)).BeginClose(null, null), new System.Action<System.IAsyncResult>(((System.ServiceModel.ICommunicationObject)(this)).EndClose));
         }
         
         private static System.ServiceModel.Channels.Binding GetBindingForEndpoint(EndpointConfiguration endpointConfiguration)
@@ -180,11 +175,11 @@ namespace SoSystemUserService
         {
             if ((endpointConfiguration == EndpointConfiguration.BasicHttpBinding_IPartnerSystemUserService))
             {
-                return new System.ServiceModel.EndpointAddress(SuperOffice.DevNet.Online.SystemUser.NetCore.ConsoleApp.Constants.SystemUserEndpoint);
+                return new System.ServiceModel.EndpointAddress("http://bud2.superoffice.no/Login/services/PartnerSystemUserService.svc");
             }
             if ((endpointConfiguration == EndpointConfiguration.BasicHttpBinding_IPartnerSystemUserService1))
             {
-                return new System.ServiceModel.EndpointAddress(SuperOffice.DevNet.Online.SystemUser.NetCore.ConsoleApp.Constants.SystemUserEndpoint);
+                return new System.ServiceModel.EndpointAddress("https://bud2.superoffice.no/Login/services/PartnerSystemUserService.svc");
             }
             throw new System.InvalidOperationException(string.Format("Could not find endpoint with name \'{0}\'.", endpointConfiguration));
         }

@@ -1,5 +1,5 @@
 ﻿using Microsoft.IdentityModel.Tokens;
-using SoSystemUserService;
+using SoSystemUserAuthentication;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
@@ -64,7 +64,7 @@ namespace SuperOffice.DevNet.Online.SystemUser.NetCore.ConsoleApp
 
             if (response.IsSuccessful)
             {
-                var superOfficeCertificate = new System.Security.Cryptography.X509Certificates.X509Certificate2(
+                var superOfficeCertificate = X509CertificateLoader.LoadCertificateFromFile(
                        AppContext.BaseDirectory + "SuperOfficeFederatedLogin.crt");
 
                 // validate JWT token from SuperOffice

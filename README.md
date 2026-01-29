@@ -1,6 +1,6 @@
 # SuperOffice.DevNet.Online.SystemUser.NetCore.Console
 
-Application that demonstrates how to use .NET Core (2.2) and exchange a SuperOffice Online system user token for a system user ticket.
+Application that demonstrates how to use .NET (10) and exchange a SuperOffice Online system user token for a system user ticket.
 
 ## Switching Between Envionments
 
