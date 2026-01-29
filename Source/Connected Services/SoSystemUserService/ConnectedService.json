@@ -3,7 +3,7 @@
   "version": "2.1.0",
   "ExtendedData": {
     "inputs": [
-      "../../../PartnerSystemUserService.wsdl"
+      "../../PartnerSystemUserService/PartnerSystemUserService.wsdl"
     ],
     "collectionTypes": [
       "System.Array",

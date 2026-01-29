@@ -175,11 +175,11 @@ namespace SoSystemUserAuthentication
         {
             if ((endpointConfiguration == EndpointConfiguration.BasicHttpBinding_IPartnerSystemUserService))
             {
-                return new System.ServiceModel.EndpointAddress("http://bud2.superoffice.no/Login/services/PartnerSystemUserService.svc");
+                return new System.ServiceModel.EndpointAddress("http://sod.superoffice.no/Login/services/PartnerSystemUserService.svc");
             }
             if ((endpointConfiguration == EndpointConfiguration.BasicHttpBinding_IPartnerSystemUserService1))
             {
-                return new System.ServiceModel.EndpointAddress("https://bud2.superoffice.no/Login/services/PartnerSystemUserService.svc");
+                return new System.ServiceModel.EndpointAddress("https://sod.superoffice.no/Login/services/PartnerSystemUserService.svc");
             }
             throw new System.InvalidOperationException(string.Format("Could not find endpoint with name \'{0}\'.", endpointConfiguration));
         }
